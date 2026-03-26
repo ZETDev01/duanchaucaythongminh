@@ -4,7 +4,8 @@
   "description": "Smart Plant Pot Control System",
   "main": "index.html",
   "scripts": {
-    "deploy": "vercel --prod"
+    "deploy": "vercel deploy --prod",
+    "deploy:preview": "vercel deploy"
   },
   "keywords": [
     "iot",
@@ -12,5 +13,8 @@
     "firebase"
   ],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "vercel": "^41.4.1"
+  }
 }

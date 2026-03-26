@@ -7,94 +7,177 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
+        :root {
+            --sp-bg-1: #0f172a;
+            --sp-bg-2: #1e3a5f;
+            --sp-accent: #22c55e;
+            --sp-accent-2: #38bdf8;
+            --sp-card: rgba(255, 255, 255, 0.92);
+            --sp-card-border: rgba(255, 255, 255, 0.35);
+            --sp-shadow: 0 20px 50px rgba(15, 23, 42, 0.35);
         }
-        
+        body {
+            font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+            background: linear-gradient(160deg, var(--sp-bg-1) 0%, var(--sp-bg-2) 45%, #0c4a6e 100%);
+            min-height: 100vh;
+            padding: 24px 16px 48px;
+            color: #0f172a;
+        }
+        .app-brand {
+            text-align: center;
+            color: #e2e8f0;
+            margin-bottom: 1.5rem;
+        }
+        .app-brand h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.25rem;
+        }
+        .app-brand p {
+            margin: 0;
+            font-size: 0.9rem;
+            opacity: 0.85;
+        }
         .main-container {
-            max-width: 900px;
+            max-width: 920px;
             margin: 0 auto;
         }
-        
         .card {
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            margin-bottom: 20px;
+            border-radius: 18px;
+            border: 1px solid var(--sp-card-border);
+            background: var(--sp-card);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--sp-shadow);
+            margin-bottom: 1.25rem;
+            overflow: hidden;
         }
-        
+        .card-header {
+            font-weight: 600;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+            padding: 1rem 1.25rem;
+        }
+        .card-body {
+            padding: 1.25rem;
+        }
         .pot-item {
             cursor: pointer;
-            transition: all 0.3s;
-            border-left: 4px solid #667eea;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+            border-left: 4px solid var(--sp-accent-2);
+            border-radius: 12px !important;
+            margin-bottom: 0.5rem;
         }
-        
         .pot-item:hover {
-            background-color: #f8f9fa;
-            transform: translateX(5px);
+            background-color: #f0f9ff;
+            transform: translateX(4px);
+            box-shadow: 0 8px 24px rgba(14, 165, 233, 0.12);
         }
-        
         .weather-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 50%, #0f172a 100%);
             color: white;
+            border: none;
         }
-        
-        .sensor-badge {
-            font-size: 1.5rem;
-            padding: 10px 20px;
+        .weather-card .card-body {
+            padding: 1.35rem;
         }
-        
+        .weather-card small {
+            opacity: 0.9;
+        }
+        .sensor-tile {
+            border-radius: 14px;
+            padding: 1.25rem;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 1px solid #e2e8f0;
+            height: 100%;
+        }
+        .sensor-tile h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
         .pump-btn {
-            padding: 15px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 10px;
-            transition: all 0.3s;
+            padding: 14px 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 14px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
         }
-        
         .pump-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(15, 23, 42, 0.2);
         }
-        
+        .section-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .section-title i {
+            color: var(--sp-accent);
+        }
+        .schedule-panel {
+            background: linear-gradient(180deg, #ecfdf5 0%, #f0fdf4 100%);
+            border: 1px solid #bbf7d0;
+            border-radius: 14px;
+            padding: 1rem 1.15rem;
+        }
+        .schedule-status {
+            font-size: 0.9rem;
+            color: #166534;
+            margin-top: 0.75rem;
+        }
         .hidden {
-            display: none;
+            display: none !important;
         }
-        
         @keyframes pulse {
             0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+            50% { opacity: 0.65; }
         }
-        
         .pumping {
             animation: pulse 1s infinite;
+        }
+        .btn-icon-back {
+            border-radius: 10px;
         }
     </style>
 </head>
 <body>
     <div class="main-container">
+        <header class="app-brand">
+            <h1><i class="fas fa-leaf me-2" style="color:#4ade80"></i>SmartPlant</h1>
+            <p>Theo dõi độ ẩm đất và bơm nước cho từng chậu</p>
+        </header>
         <!-- Layer 1: Danh sách chậu cây -->
         <div id="layerPotList" class="card">
-            <div class="card-header bg-primary text-white">
-                <h4 class="mb-0"><i class="fas fa-seedling"></i> Danh Sách Chậu Cây</h4>
+            <div class="card-header text-white" style="background: linear-gradient(90deg, #059669, #0d9488);">
+                <h4 class="mb-0"><i class="fas fa-seedling me-2"></i>Danh sách chậu cây</h4>
             </div>
             <div class="card-body">
                 <div id="potList" class="list-group">
                     <!-- Sẽ được tạo động bằng JavaScript -->
                 </div>
+                <button type="button" class="btn btn-outline-light w-100 mt-3 border-2" style="color:#0f172a;background:rgba(255,255,255,0.85);" onclick="addNewPot()">
+                    <i class="fas fa-plus-circle me-2"></i>Thêm chậu mới
+                </button>
+                <p class="text-muted small mt-2 mb-0">Mỗi chậu được quản lý riêng. Thêm chậu khi bạn có thêm cây cần theo dõi.</p>
             </div>
         </div>
 
         <!-- Layer 2: Chọn/Nhập tên cây -->
         <div id="layerSelectPlant" class="card hidden">
-            <div class="card-header bg-success text-white">
-                <h4 class="mb-0">
-                    <button class="btn btn-light btn-sm me-2" onclick="backToPotList()">
+            <div class="card-header text-white" style="background: linear-gradient(90deg, #16a34a, #15803d);">
+                <h4 class="mb-0 d-flex align-items-center flex-wrap gap-2">
+                    <button type="button" class="btn btn-light btn-sm btn-icon-back" onclick="backToPotList()" aria-label="Quay lại">
                         <i class="fas fa-arrow-left"></i>
                     </button>
-                    Đặt Tên Cho Chậu
+                    Đặt tên cho chậu
                 </h4>
             </div>
             <div class="card-body">
@@ -146,9 +229,9 @@
         <div id="layerControl" class="hidden">
             <!-- Header -->
             <div class="card">
-                <div class="card-header bg-info text-white">
-                    <h4 class="mb-0">
-                        <button class="btn btn-light btn-sm me-2" onclick="backToPotList()">
+                <div class="card-header text-white" style="background: linear-gradient(90deg, #0284c7, #0369a1);">
+                    <h4 class="mb-0 d-flex align-items-center flex-wrap gap-2">
+                        <button type="button" class="btn btn-light btn-sm btn-icon-back" onclick="backToPotList()" aria-label="Quay lại">
                             <i class="fas fa-arrow-left"></i>
                         </button>
                         <span id="currentPotName">Chậu 1</span>
@@ -159,7 +242,7 @@
             <!-- Thời tiết Hà Nội -->
             <div class="card weather-card">
                 <div class="card-body">
-                    <h5 class="mb-3"><i class="fas fa-cloud-sun"></i> Thời Tiết Hà Nội</h5>
+                    <h5 class="mb-3 fw-semibold"><i class="fas fa-cloud-sun me-2"></i>Thời tiết Hà Nội</h5>
                     <div class="row text-center">
                         <div class="col-6 col-md-3">
                             <div>
@@ -196,22 +279,54 @@
             <!-- Dữ liệu cảm biến Firebase -->
             <div class="card">
                 <div class="card-body">
-                    <h5 class="mb-3"><i class="fas fa-database"></i> Dữ Liệu Cảm Biến</h5>
-                    <div class="row text-center">
+                    <div class="section-title"><i class="fas fa-chart-line"></i> Độ ẩm đất &amp; bơm</div>
+                    <div class="row text-center g-3">
                         <div class="col-6">
-                            <div class="p-3 bg-light rounded">
-                                <i class="fas fa-droplet fa-2x text-primary mb-2"></i>
-                                <h2 id="soilMoisture" class="text-primary">--%</h2>
-                                <p class="mb-0">Độ Ẩm Đất</p>
+                            <div class="sensor-tile">
+                                <i class="fas fa-droplet fa-2x text-primary mb-2 d-block"></i>
+                                <h2 id="soilMoisture" class="text-primary mb-1">--%</h2>
+                                <p class="mb-0 text-muted small">Độ ẩm đất</p>
                             </div>
                         </div>
                         <div class="col-6">
-                            <div class="p-3 bg-light rounded">
-                                <i class="fas fa-pump-soap fa-2x text-success mb-2"></i>
-                                <h2 id="pumpStatus" class="text-success">TẮT</h2>
-                                <p class="mb-0">Trạng Thái Bơm</p>
+                            <div class="sensor-tile">
+                                <i class="fas fa-faucet fa-2x text-success mb-2 d-block"></i>
+                                <h2 id="pumpStatus" class="text-success mb-1">TẮT</h2>
+                                <p class="mb-0 text-muted small">Trạng thái bơm</p>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="section-title"><i class="fas fa-clock"></i> Hẹn giờ bật bơm</div>
+                    <p class="text-muted small mb-3">Chọn thời điểm và lượng nước. Lịch lưu trên trình duyệt; đến giờ web bật/tắt <strong>bơm</strong> qua Firebase. Thiết bị chỉ đọc tín hiệu bơm và gửi độ ẩm đất.</p>
+                    <div class="schedule-panel">
+                        <div class="row g-3 align-items-end">
+                            <div class="col-md-5">
+                                <label class="form-label small fw-semibold mb-1" for="scheduleDateTime">Thời gian bắt đầu</label>
+                                <input type="datetime-local" id="scheduleDateTime" class="form-control">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small fw-semibold mb-1" for="scheduleWater">Lượng nước</label>
+                                <select id="scheduleWater" class="form-select">
+                                    <option value="1">100 ml (1 giây)</option>
+                                    <option value="2">200 ml (2 giây)</option>
+                                    <option value="3">300 ml (3 giây)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 d-flex flex-column gap-2">
+                                <button type="button" class="btn btn-success w-100" onclick="savePumpSchedule()">
+                                    <i class="fas fa-calendar-check me-1"></i> Lưu lịch
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary w-100" onclick="cancelPumpSchedule()">
+                                    <i class="fas fa-times me-1"></i> Hủy lịch
+                                </button>
+                            </div>
+                        </div>
+                        <div id="scheduleStatus" class="schedule-status hidden"></div>
                     </div>
                 </div>
             </div>
@@ -219,7 +334,7 @@
             <!-- Điều khiển bơm -->
             <div class="card">
                 <div class="card-body">
-                    <h5 class="mb-3"><i class="fas fa-hand-pointer"></i> Điều Khiển Bơm Nước - <span id="plantTypeDisplay">Hoa Lan</span></h5>
+                    <div class="section-title"><i class="fas fa-hand-pointer"></i> Bơm ngay — <span id="plantTypeDisplay">Hoa Lan</span></div>
                     <div class="row g-3">
                         <div class="col-4">
                             <button class="btn btn-success pump-btn w-100" onclick="controlPump(1)">
@@ -255,7 +370,12 @@
     <script type="module">
         // Import Firebase
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
-        import { getDatabase, ref, set, onValue } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
+        import { getDatabase, ref, set, onValue, update, get } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
+        
+        const firebaseUnsubs = [];
+        let scheduleExecuting = false;
+        const SCHEDULE_TICK_MS = 2000;
+        const SCHEDULES_LS_KEY = 'smartPlantSchedules';
         
         // Firebase configuration
         const firebaseConfig = {
@@ -283,6 +403,42 @@
         ];
         
         let currentPotId = null;
+        
+        /** Firebase tối giản cho ESP: mỗi chậu = plant{n}/grsensor + plant{n}/pump */
+        function potPaths(potId) {
+            const r = `plant${potId}`;
+            return {
+                grsensor: `${r}/grsensor`,
+                pump: `${r}/pump`
+            };
+        }
+        
+        function readSchedules() {
+            try {
+                return JSON.parse(localStorage.getItem(SCHEDULES_LS_KEY) || '{}');
+            } catch {
+                return {};
+            }
+        }
+        
+        function writeSchedules(obj) {
+            localStorage.setItem(SCHEDULES_LS_KEY, JSON.stringify(obj));
+        }
+        
+        /** Tạo sẵn plant{n} trên Firebase (chỉ khi node chưa có — không ghi đè ESP). */
+        async function ensurePotSchemaOnFirebase(potId) {
+            if (potId == null) return;
+            const p = potPaths(potId);
+            const updates = {};
+            const [gSnap, pSnap] = await Promise.all([
+                get(ref(db, p.grsensor)),
+                get(ref(db, p.pump))
+            ]);
+            if (!gSnap.exists()) updates[p.grsensor] = 0;
+            if (!pSnap.exists()) updates[p.pump] = false;
+            if (Object.keys(updates).length === 0) return;
+            await update(ref(db), updates);
+        }
         
         // Render danh sách chậu
         function renderPotList() {
@@ -320,6 +476,19 @@
             });
         }
         
+        window.addNewPot = function() {
+            const nextId = pots.length ? Math.max(...pots.map(p => p.id)) + 1 : 1;
+            if (nextId > 30) {
+                alert('Giới hạn 30 chậu.');
+                return;
+            }
+            const newPot = { id: nextId, name: null };
+            pots.push(newPot);
+            localStorage.setItem('smartPots', JSON.stringify(pots));
+            ensurePotSchemaOnFirebase(newPot.id).catch((e) => console.warn('ensure pot:', e));
+            renderPotList();
+        };
+        
         // Mở layer chọn tên cây
         window.openSelectPlant = function(potId) {
             currentPotId = potId;
@@ -334,6 +503,7 @@
             if (pot) {
                 pot.name = plantName;
                 localStorage.setItem('smartPots', JSON.stringify(pots));
+                ensurePotSchemaOnFirebase(pot.id).catch((e) => console.warn('ensure pot:', e));
                 openPotControl(currentPotId);
             }
         };
@@ -348,8 +518,16 @@
             }
         };
         
+        function detachFirebaseListeners() {
+            while (firebaseUnsubs.length) {
+                const u = firebaseUnsubs.pop();
+                try { u(); } catch (e) { /* noop */ }
+            }
+        }
+        
         // Quay lại danh sách chậu
         window.backToPotList = function() {
+            detachFirebaseListeners();
             document.getElementById('layerPotList').classList.remove('hidden');
             document.getElementById('layerSelectPlant').classList.add('hidden');
             document.getElementById('layerControl').classList.add('hidden');
@@ -373,11 +551,22 @@
             document.getElementById('currentPotName').textContent = `Chậu ${pot.id}: ${pot.name}`;
             document.getElementById('plantTypeDisplay').textContent = pot.name;
             
-            // Lấy dữ liệu thời tiết
-            fetchWeather();
+            const dtEl = document.getElementById('scheduleDateTime');
+            if (dtEl) {
+                const pad = (n) => String(n).padStart(2, '0');
+                const d = new Date();
+                d.setMinutes(d.getMinutes() + 2);
+                dtEl.min = new Date().toISOString().slice(0, 16);
+                dtEl.value = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+            }
             
-            // Lắng nghe Firebase
-            listenFirebaseData();
+            ensurePotSchemaOnFirebase(pot.id)
+                .catch((e) => console.warn('ensure pot:', e))
+                .finally(() => {
+                    fetchWeather();
+                    listenFirebaseData();
+                    updateScheduleStatusUI(readSchedules()[String(pot.id)] || null);
+                });
         };
         
         // Lấy dữ liệu thời tiết
@@ -412,68 +601,140 @@
             }
         }
         
-        // Lắng nghe dữ liệu Firebase
-        function listenFirebaseData() {
-            // Độ ẩm đất
-            const soilRef = ref(db, '/do_am_dat');
-            onValue(soilRef, (snapshot) => {
-                const value = snapshot.val();
-                if (value !== null) {
-                    document.getElementById('soilMoisture').textContent = value + '%';
-                }
-            });
-            
-            // Trạng thái bơm
-            const pumpRef = ref(db, '/trang_thai_bom');
-            onValue(pumpRef, (snapshot) => {
-                const value = snapshot.val();
-                const pumpStatusEl = document.getElementById('pumpStatus');
-                
-                if (value === true) {
-                    pumpStatusEl.textContent = 'BẬT';
-                    pumpStatusEl.className = 'text-danger pumping';
-                } else {
-                    pumpStatusEl.textContent = 'TẮT';
-                    pumpStatusEl.className = 'text-success';
-                }
-            });
+        function updateScheduleStatusUI(data) {
+            const el = document.getElementById('scheduleStatus');
+            if (!el) return;
+            if (!data || data.at == null) {
+                el.classList.add('hidden');
+                el.textContent = '';
+                return;
+            }
+            const giay = Math.min(3, Math.max(1, Number(data.giay) || 1));
+            const when = new Date(data.at);
+            el.textContent = `Đã đặt lịch: ${giay * 100} ml — ${when.toLocaleString('vi-VN')}`;
+            el.classList.remove('hidden');
         }
         
-        // Điều khiển bơm
-        window.controlPump = function(seconds) {
-            const pumpRef = ref(db, '/trang_thai_bom');
+        function runPumpSequenceForPot(potId, seconds, opts = {}) {
+            const pumpRef = ref(db, potPaths(potId).pump);
             const messageEl = document.getElementById('pumpMessage');
-            
-            // Bật bơm
-            set(pumpRef, true)
+            const prefix = opts.fromSchedule ? '⏰ Lịch hẹn: ' : '';
+            const showMsg = !opts.silent && messageEl;
+            return set(pumpRef, true)
                 .then(() => {
-                    messageEl.textContent = `⏱️ Đang bơm ${seconds * 100}ml (${seconds} giây)...`;
-                    messageEl.className = 'alert alert-warning mt-3';
-                    messageEl.classList.remove('hidden');
-                    
-                    // Tắt sau X giây
-                    setTimeout(() => {
-                        set(pumpRef, false)
-                            .then(() => {
-                                messageEl.textContent = '✅ Đã hoàn thành bơm nước!';
-                                messageEl.className = 'alert alert-success mt-3';
-                                
-                                setTimeout(() => {
-                                    messageEl.classList.add('hidden');
-                                }, 3000);
-                            });
-                    }, seconds * 1000);
+                    if (showMsg) {
+                        messageEl.textContent = `${prefix}Đang bơm ${seconds * 100} ml (${seconds} giây)...`;
+                        messageEl.className = 'alert alert-warning mt-3';
+                        messageEl.classList.remove('hidden');
+                    }
+                    return new Promise((resolve, reject) => {
+                        setTimeout(() => {
+                            set(pumpRef, false)
+                                .then(() => {
+                                    if (showMsg) {
+                                        messageEl.textContent = opts.fromSchedule
+                                            ? '✅ Đã bơm theo lịch hẹn.'
+                                            : '✅ Đã hoàn thành bơm nước!';
+                                        messageEl.className = 'alert alert-success mt-3';
+                                        setTimeout(() => messageEl.classList.add('hidden'), 3500);
+                                    }
+                                    resolve();
+                                })
+                                .catch(reject);
+                        }, seconds * 1000);
+                    });
                 })
                 .catch((error) => {
-                    console.error('Lỗi:', error);
-                    messageEl.textContent = '❌ Lỗi: ' + error.message;
-                    messageEl.className = 'alert alert-danger mt-3';
-                    messageEl.classList.remove('hidden');
+                    console.error('Lỗi bơm:', error);
+                    if (showMsg) {
+                        messageEl.textContent = '❌ Lỗi: ' + error.message;
+                        messageEl.className = 'alert alert-danger mt-3';
+                        messageEl.classList.remove('hidden');
+                    }
+                    throw error;
                 });
+        }
+        
+        function tickSchedules() {
+            if (scheduleExecuting) return;
+            const sched = readSchedules();
+            const now = Date.now();
+            for (const potIdStr of Object.keys(sched)) {
+                const job = sched[potIdStr];
+                if (!job || typeof job.at !== 'number') continue;
+                if (now < job.at) continue;
+                const pid = parseInt(potIdStr, 10);
+                const giay = Math.min(3, Math.max(1, Number(job.giay) || 1));
+                delete sched[potIdStr];
+                writeSchedules(sched);
+                if (!document.getElementById('layerControl').classList.contains('hidden') && currentPotId === pid) {
+                    updateScheduleStatusUI(null);
+                }
+                scheduleExecuting = true;
+                const layerOpen = !document.getElementById('layerControl').classList.contains('hidden');
+                const silent = !layerOpen || currentPotId !== pid;
+                runPumpSequenceForPot(pid, giay, { fromSchedule: true, silent })
+                    .catch((e) => console.error('Lịch bơm:', e))
+                    .finally(() => { scheduleExecuting = false; });
+                return;
+            }
+        }
+        
+        function listenFirebaseData() {
+            detachFirebaseListeners();
+            const paths = potPaths(currentPotId);
+            firebaseUnsubs.push(onValue(ref(db, paths.grsensor), (snapshot) => {
+                const value = snapshot.val();
+                if (value !== null && value !== undefined) {
+                    document.getElementById('soilMoisture').textContent = value + '%';
+                }
+            }));
+            firebaseUnsubs.push(onValue(ref(db, paths.pump), (snapshot) => {
+                const value = snapshot.val();
+                const pumpStatusEl = document.getElementById('pumpStatus');
+                if (value === true) {
+                    pumpStatusEl.textContent = 'BẬT';
+                    pumpStatusEl.className = 'text-danger pumping mb-1';
+                } else {
+                    pumpStatusEl.textContent = 'TẮT';
+                    pumpStatusEl.className = 'text-success mb-1';
+                }
+            }));
+        }
+        
+        window.savePumpSchedule = function() {
+            const dt = document.getElementById('scheduleDateTime').value;
+            if (!dt) {
+                alert('Vui lòng chọn ngày giờ.');
+                return;
+            }
+            const at = new Date(dt).getTime();
+            if (Number.isNaN(at) || at <= Date.now()) {
+                alert('Chọn thời điểm trong tương lai.');
+                return;
+            }
+            const giay = parseInt(document.getElementById('scheduleWater').value, 10);
+            const sched = readSchedules();
+            sched[String(currentPotId)] = { at, giay };
+            writeSchedules(sched);
+            updateScheduleStatusUI(sched[String(currentPotId)]);
         };
         
-        // Khởi tạo
+        window.cancelPumpSchedule = function() {
+            const sched = readSchedules();
+            delete sched[String(currentPotId)];
+            writeSchedules(sched);
+            updateScheduleStatusUI(null);
+        };
+        
+        window.controlPump = function(seconds) {
+            runPumpSequenceForPot(currentPotId, seconds, { fromSchedule: false });
+        };
+        
+        // Khởi tạo: tạo sẵn path Firebase cho mọi chậu trong danh sách (đồng bộ với ESP)
         renderPotList();
+        Promise.all(pots.map((p) => ensurePotSchemaOnFirebase(p.id))).catch((e) => console.warn('ensure all pots:', e));
+        setInterval(tickSchedules, SCHEDULE_TICK_MS);
         
         // Tự động cập nhật thời tiết mỗi 10 phút
         setInterval(() => {
