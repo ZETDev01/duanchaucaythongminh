@@ -1,0 +1,20 @@
+{
+  "name": "chau-cay-thong-minh",
+  "version": "1.0.0",
+  "description": "Smart Plant Pot Control System",
+  "main": "index.html",
+  "scripts": {
+    "deploy": "vercel deploy --prod",
+    "deploy:preview": "vercel deploy"
+  },
+  "keywords": [
+    "iot",
+    "smart-plant",
+    "firebase"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "vercel": "^41.4.1"
+  }
+}
